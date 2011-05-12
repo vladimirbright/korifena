@@ -91,6 +91,9 @@ GLOBAL_MEDIA_DIRS = (
 )
 
 MEDIA_BUNDLES = (
+    ("style.bundle.css",
+        "css/style.css"
+    ),
 )
 
 
@@ -110,6 +113,7 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
     'mediagenerator',
     'pagination',
+    'realty',
     'south',
 )
 
