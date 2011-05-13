@@ -94,6 +94,16 @@ MEDIA_BUNDLES = (
     ("style.bundle.css",
         "css/style.css"
     ),
+    ("screen.bundle.css",
+        "css/screen.css",
+        "css/st.sass"
+    ),
+    ("print.bundle.css",
+        "css/print.css"
+    ),
+    ("ie.bundle.css",
+        "css/ie.css"
+    ),
 )
 
 
