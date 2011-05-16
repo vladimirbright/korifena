@@ -1,3 +1,29 @@
+# -*- coding: utf-8 -*-
+
+
 from django.db import models
 
-# Create your models here.
+
+class SiteText(models.Model):
+    slug = models.SlugField(u"Короткое название")
+    body = models.TextField(u"Текст")
+
+    def __unicode__(self):
+        return u"Text: %s" % self.slug
+
+
+class SiteImage(models.Model):
+    slug = models.SlugField(u"Короткое название")
+    file = models.ImageField(u"Картинка", upload_to="uploads/img")
+
+    def __unicode__(self):
+        return u"Img: %s" % self.slug
+
+
+class SiteFile(models.Model):
+    slug = models.SlugField(u"Короткое название")
+    file = models.ImageField(u"Файл", upload_to="uploads/file")
+
+    def __unicode__(self):
+        return u"File: %s" % self.slug
+

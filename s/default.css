@@ -53,7 +53,6 @@ ul {
 
 ul li {
 	padding-left: 15px;
-	background: url(images/img07.gif) no-repeat 0px 7px;
 }
 
 blockquote {
@@ -98,7 +97,7 @@ hr {
 	width: 740px;
 	height: 60px;
 	margin: 0 auto;
-	background: url(images/img02.jpg);
+	background: url(images/korifena.top.jpg);
 }
 
 #menu ul {
@@ -130,7 +129,7 @@ hr {
 	width: 740px;
 	height: 301px;
 	margin: 0 auto;
-	background: #2A2A2A url(images/img03.jpg);
+	background: #2A2A2A url(images/korifena.bottom.jpg);
 }
 
 #logo h1, #logo h2 {
@@ -263,7 +262,7 @@ hr {
 }
 
 #searchinput {
-	width: 180px;
+	width: 175px;
 }
 
 #searchsubmit {

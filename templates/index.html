@@ -14,7 +14,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Discovery by Free Css Templates</title>
+<title>{% block page-title %}{{ page_title|default:"Агентство недвижимости &laquo;Корифена&raquo;" }}{% endblock %}</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 {% include_media "default.bundle.css" %}
@@ -22,22 +22,22 @@ Description: A two-column, fixed-width template with dark color scheme.
 <body>
 <div id="menu">
 	<ul>
-		<li class="active"><a href="#">Home</a></li>
-		<li><a href="#">Products</a></li>
-		<li><a href="#">Support</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Contact</a></li>
+		<li class="active"><a href="#">Главная</a></li>
+		<li><a href="#">Услуги</a></li>
+		<li><a href="#">Объекты</a></li>
+		<li><a href="#">Контакты</a></li>
+		<li><a href="#">Реквизиты</a></li>
 	</ul>
 </div>
 <div id="logo">
-	<h1><a href="#">Discovery</a></h1>
-	<h2><a href="http://www.freecsstemplates.org/">By Free CSS Templates</a></h2>
+	<h1><a href="#">&laquo;Корифена&raquo;</a></h1>
+	<h2><a href="http://www.freecsstemplates.org/">9 (828) 5 555 785</a></h2>
 </div>
 <div id="page">
 	<div id="content">
 		<div>
 			<h1 class="title">Welcome to Our Website!</h1>
-			<p><img src="images/img08.jpg" alt="" width="120" height="160" class="left" /></p>
+			<p><img src="{% media_url "images/img08.jpg" %}" alt="" width="120" height="160" class="left" /></p>
 			<p><strong>Discovery</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. The  photos are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You"re free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. <em>Enjoy :)</em></p>
 			<h2>Praesent Scelerisque</h2>
 			<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat:</p>
@@ -78,11 +78,11 @@ Description: A two-column, fixed-width template with dark color scheme.
 					<input id="searchsubmit" type="submit" value="Search" />
 					</fieldset>
 				</form>
-				<p><a href="#">Advanced Search</a></p>
 			</div>
 		</div>
 		<div id="news" class="boxed">
-			<h2 class="title">News &amp; Events</h2>
+            {# Новые объекты #}
+			<h2 class="title">Новые объекты</h2>
 			<div class="content">
 				<ul>
 					<li class="first">
@@ -101,7 +101,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 			</div>
 		</div>
 		<div id="extra" class="boxed">
-			<h2 class="title">Sagittis Convallis</h2>
+			<h2 class="title">Еще чего-то</h2>
 			<div class="content">
 				<ul class="list">
 					<li class="first"><a href="#">Ut semper vestibulum est</a></li>
