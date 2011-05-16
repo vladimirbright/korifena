@@ -17,6 +17,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 <title>{% block page-title %}Агентство недвижимости {{ on_site_contacs.buisness_title|safe }}{{ page_title|safe|default:"" }}{% endblock %}</title>
 <meta name="keywords" content="Аренда, покупка, продажа квартир и помещений в Ростове-на-Дону" />
 <meta name="description" content="Агенство недвижимости {{ on_site_contacs.buisness_title|safe }}. Аренда, покупка, продажа квартир и помещений в Ростове-на-Дону." />
+<link href="{% media_url "favicon.ico" %}"  type="image/x-icon" rel="shortcut icon" />
 {% include_media "default.bundle.css" %}
 </head>
 <body>
