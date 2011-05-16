@@ -1,0 +1,298 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 20px 0 0 0;
+	padding: 0;
+	background: #E6E6E6 url(images/img01.gif);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #666666;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	font-weight: normal;
+	color: #000000;
+}
+
+h1 {
+	font-size: 197%;
+}
+
+h2 {
+	font-size: 167%;
+}
+
+h3 {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+p, ol, ul {
+	line-height: 180%;
+}
+
+p {
+}
+
+ol {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-position: inside;
+}
+
+ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+ul li {
+	padding-left: 15px;
+	background: url(images/img07.gif) no-repeat 0px 7px;
+}
+
+blockquote {
+	margin: 0;
+	padding-left: 20px;
+	font-style: italic;
+}
+
+blockquote * {
+	line-height: normal;
+}
+
+a {
+	color: #569400;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 5px 15px 0 0;
+}
+
+img.right {
+	float: right;
+	margin: 0 0 0 15px;
+}
+
+hr {
+	display: none;
+}
+
+/* Menu */
+
+#menu {
+	width: 740px;
+	height: 60px;
+	margin: 0 auto;
+	background: url(images/img02.jpg);
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	padding: 20px 20px 0 20px;
+	text-decoration: none;
+	font-size: 136%;
+	color: #FFFFFF;
+}
+
+#menu a:hover {
+	text-decoration: underline;
+}
+
+/* Logo */
+
+#logo {
+	width: 740px;
+	height: 301px;
+	margin: 0 auto;
+	background: #2A2A2A url(images/img03.jpg);
+}
+
+#logo h1, #logo h2 {
+	margin-right: 440px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+#logo h1 {
+	padding-top: 250px;
+	font-size: 250%;
+}
+
+#logo h2 {
+	font-size: 85%;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Page */
+
+#page {
+	width: 740px;
+	margin: 0 auto;
+	background: #E6E6E6 url(images/img04.gif);
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 377px;
+	padding: 30px;
+	background: url(images/img05.gif) repeat-x;
+	border: 1px solid #E6E6E6;
+}
+
+.twocols {
+}
+
+.twocols .col1, .twocols .col2 {
+	width: 168px;
+	padding: 10px;
+	background: url(images/img05.gif) repeat-x 0px 30px;
+}
+
+.twocols .col1 {
+	float: left;
+}
+
+.twocols .col2 {
+	float: right;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 297px;
+	background: url(images/img05.gif) repeat-x;
+	border: 1px solid #E6E6E6;
+}
+
+.boxed {
+}
+
+.boxed .title {
+	height: 29px;
+	margin: 0;
+	padding: 12px 0 0 20px;
+	background: #656464 url(images/img06.gif) repeat-x;
+	text-transform: uppercase;
+	font-size: 122%;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.boxed .content {
+	padding: 20px;
+	background: url(images/img05.gif) repeat-x;
+}
+
+.boxed h3 {
+	margin: 0;
+}
+
+.boxed p, .boxed ul, .boxed ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+}
+
+.boxed ul {
+}
+
+.boxed ul li {
+	padding: 10px 15px;
+	background-position: 0 13px;
+	border-top: 1px solid #CFCFCF;
+}
+
+.boxed ul li.first {
+	border: none;
+}
+
+/* Search */
+
+#search {
+}
+
+#search form {
+	margin: 0;
+	padding: 0;
+}
+
+#search fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#search p {
+	margin: 0;
+	font-size: 85%;
+}
+
+#searchinput {
+	width: 180px;
+}
+
+#searchsubmit {
+}
+
+/* Footer */
+
+#footer {
+	width: 740px;
+	margin: 0 auto;
+	height: 100px;
+	padding: 20px 0 0 0;
+	background: url(images/img09.gif) repeat-x;
+}
+
+#footer p {
+	margin: 0;
+	line-height: normal;
+	font-size: 85%;
+}
+
+#footer a {
+	color: #666666;
+}
+
+#legal {
+	float: left;
+}
+
+#links {
+	float: right;
+}
