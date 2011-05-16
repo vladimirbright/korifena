@@ -1,0 +1,7 @@
+Django
+PIL
+South
+django-mediagenerator
+django-pagination
+flup
+psycopg2
