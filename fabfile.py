@@ -24,7 +24,7 @@ def manage(command):
 
 
 @hosts('korifena.ru@korifena.ru')
-def test_hup():
+def hup():
     run('kill -s HUP `cat ' + env.pid + '`', pty=True)
 
 

@@ -299,3 +299,11 @@ hr {
 #links {
 	float: right;
 }
+
+.page404 {
+  width: 300px;
+  margin: 100px auto 200px auto;
+}
+.page404 h1 {
+  color: #FFFFFF;
+}
