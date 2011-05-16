@@ -59,6 +59,8 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
+
+    "realty.context_processors.get_site_data",
 ]
 
 if DEBUG:

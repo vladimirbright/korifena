@@ -11,6 +11,10 @@ class SiteText(models.Model):
     def __unicode__(self):
         return u"Text: %s" % self.slug
 
+    class Meta:
+        verbose_name = u"Текст"
+        verbose_name_plural = u"Тексты"
+
 
 class SiteImage(models.Model):
     slug = models.SlugField(u"Короткое название")
@@ -19,6 +23,10 @@ class SiteImage(models.Model):
     def __unicode__(self):
         return u"Img: %s" % self.slug
 
+    class Meta:
+        verbose_name = u"Картинка"
+        verbose_name_plural = u"Картинки"
+
 
 class SiteFile(models.Model):
     slug = models.SlugField(u"Короткое название")
@@ -26,4 +34,11 @@ class SiteFile(models.Model):
 
     def __unicode__(self):
         return u"File: %s" % self.slug
+
+    class Meta:
+        verbose_name = u"Файл"
+        verbose_name_plural = u"Файлы"
+
+
+
 

@@ -14,24 +14,24 @@ Description: A two-column, fixed-width template with dark color scheme.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>{% block page-title %}{{ page_title|default:"Агентство недвижимости &laquo;Корифена&raquo;" }}{% endblock %}</title>
+<title>{% block page-title %}Агентство недвижимости {{ on_site_contacs.buisness_title|safe }}{{ page_title|safe|default:"" }}{% endblock %}</title>
 <meta name="keywords" content="" />
-<meta name="description" content="" />
+<meta name="description" content="Агенство недвижимости {{ on_site_contacs.buisness_title|safe }}. Аренда, покупка, продажа квартир и почещений в Ростове-на-Дону" />
 {% include_media "default.bundle.css" %}
 </head>
 <body>
 <div id="menu">
 	<ul>
-		<li class="active"><a href="#">Главная</a></li>
-		<li><a href="#">Услуги</a></li>
-		<li><a href="#">Объекты</a></li>
-		<li><a href="#">Контакты</a></li>
-		<li><a href="#">Реквизиты</a></li>
+		<li class="{{ active_link.index|default:"" }}"><a href="{% url index %}">Главная</a></li>
+		<li class="{{ active_link.services|default:"" }}"><a href="{% url services %}">Услуги</a></li>
+		<li class="{{ active_link.items|default:"" }}"><a href="{% url items %}">Объекты</a></li>
+		<li class="{{ active_link.contacts|default:"" }}"><a href="{% url contacts %}">Контакты</a></li>
+		<li class="{{ active_link.essential_elements|default:"" }}"><a href="{% url essential_elements %}">Реквизиты</a></li>
 	</ul>
 </div>
 <div id="logo">
-	<h1><a href="#">&laquo;Корифена&raquo;</a></h1>
-	<h2><a href="http://www.freecsstemplates.org/">9 (828) 5 555 785</a></h2>
+	<h1><a>{{ on_site_contacs.buisness_title|safe }}</a></h1>
+	<h2><a href="mailto:{{ on_site_contacs.email }}">{{ on_site_contacs.email }}</a><a>, {{ on_site_contacs.phone }}</a></h2>
 </div>
 <div id="page">
 	<div id="content">

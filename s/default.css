@@ -123,13 +123,17 @@ hr {
 	text-decoration: underline;
 }
 
+#menu .active a {
+  color: #91F200;
+}
+
 /* Logo */
 
 #logo {
 	width: 740px;
 	height: 301px;
 	margin: 0 auto;
-	background: #2A2A2A url(images/korifena.bottom.jpg);
+	background: #2A2A2A url(images/korifena.bottom.jpg) no-repeat;
 }
 
 #logo h1, #logo h2 {
