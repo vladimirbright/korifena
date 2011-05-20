@@ -3,3 +3,5 @@
 *.log
 *.pyc
 local_settings.py
+s/thumbs/*
+s/uploads/*

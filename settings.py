@@ -113,6 +113,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.webdesign',
+    'easy_thumbnails',
     'mediagenerator',
     'pagination',
     'realty',

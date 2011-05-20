@@ -36,6 +36,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 </div>
 <div id="page">
 	<div id="content">
+        {% block content %}
 		<div>
 			<h1 class="title">Welcome to Our Website!</h1>
 			<p><img src="{% media_url "images/img08.jpg" %}" alt="" width="120" height="160" class="left" /></p>
@@ -68,23 +69,27 @@ Description: A two-column, fixed-width template with dark color scheme.
 				</ul>
 			</div>
 		</div>
+        {% endblock %}
 	</div>
 	<!-- end content -->
 	<div id="sidebar">
 		<div id="search" class="boxed">
 			<div class="content">
+                {% block top-sidebar %}
 				<form id="searchform" method="get" action="">
 					<fieldset>
 					<input id="searchinput" type="text" name="searchinput" value="" />
 					<input id="searchsubmit" type="submit" value="Search" />
 					</fieldset>
 				</form>
+                {% endblock %}
 			</div>
 		</div>
 		<div id="news" class="boxed">
             {# Новые объекты #}
-			<h2 class="title">Новые объекты</h2>
+			<h2 class="title">{% block middle-sidebar-title %}Новые объекты{% endblock %}</h2>
 			<div class="content">
+                {% block middle-sidebar %}
 				<ul>
 					<li class="first">
 						<h3>04 July 2007</h3>
@@ -99,11 +104,13 @@ Description: A two-column, fixed-width template with dark color scheme.
 						<p><a href="#">Quisque dictum integer nisl risus sagittis&hellip;</a></p>
 					</li>
 				</ul>
+                {% endblock %}
 			</div>
 		</div>
 		<div id="extra" class="boxed">
-			<h2 class="title">Еще чего-то</h2>
+			<h2 class="title">{% block bottom-sidebar-title %}Еще чего-то{% endblock %}</h2>
 			<div class="content">
+                {% block bottom-sidebar %}
 				<ul class="list">
 					<li class="first"><a href="#">Ut semper vestibulum est</a></li>
 					<li><a href="#">Vestibulum luctus venenatis</a></li>
@@ -113,6 +120,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 					<li><a href="#">Ut tincidunt elit vitae augue</a></li>
 					<li><a href="#">Sed quis odio sagittis leo</a></li>
 				</ul>
+                {% endblock %}
 			</div>
 		</div>
 	</div>

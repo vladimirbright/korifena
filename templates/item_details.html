@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block bottom-sidebar-title %}Фотографии{% endblock %}
+{% block bottom-sidebar %}
+{% load thumbnail %}
+<ul class="list">
+    {% for im in offer.offerphoto_set.all %}
+        <li {% if forloop.first %}class="first"{% endif %}>
+            <a href="{{ im.img.url }}"><img src="{% thumbnail im.img 230x200 %}" /></a>
+            {% if perms.realty.delete_offerphoto %}
+                <br><a href="{% url admin:realty_offerphoto_delete im.pk %}">Удалить фотографию</a>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li class="first">Не были загружены</li>
+        {% if perms.realty.add_offerphoto %}
+            <li><a href="{% url admin:realty_offer_change offer.pk %}">Загрузить</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}
+
