@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+{% load markup pagination_tags %}
+{% block content %}
+    {% if offer_type or quarter or apartment_type %}
+    <div class="breadcrumps">
+        <a href="{% url items %}">&larr; все</a><br><br>
+        {% if quarter %}
+            <a href="{% url items %}?quarter={{ quarter.pk }}">&larr; {{ quarter.title }}</a>
+            <br><br>
+        {% endif %}
+        {% if apartment_type %}
+            <a href="{% url items %}?apartment_type={{ apartment_type.pk }}">&larr; {{ apartment_type.title }}</a>
+            <br><br>
+        {% endif %}
+        {% if offer_type %}
+            <a href="{% url items %}?offer_type={{ offer_type.pk }}">&larr; {{ offer_type.title }}</a>
+            <br><br>
+        {% endif %}
+    </div>
+    {% endif %}
+    <h2 class="title">{{ offer_type.title|default:"Найти" }} квартиру в Ростове-на-Дону.</h2>
+    {% if perms.realty.add_offer  %}
+        <div> <a href="{% url admin:realty_offer_add %}" class="admin_link">добавить объявление</a> </div>
+    {% endif %}
+    {% autopaginate offers 10 %}
+    {% paginate %}
+    <ul class="items_list">
+        {% for o in offers %}
+        <li>
+            <a href="{{ o.get_absolute_url }}">
+                <span class="offer_type">[{{ o.offer_type.title }}]</span>
+                <span class="quarter">{{ o.quarter.title }}</span>
+                <span class="apartment_type">{{ o.apartment_type.title }}</span>
+            </a>
+            <p>{{ o.text|safe|textile }}</p>
+            {% if perms.realty.change_offer %}<a href="{% url admin:realty_offer_change o.pk %}" class="admin_link">редактировать</a>{% endif %}
+            {% if perms.realty.delete_offer %}&nbsp;<a href="{% url admin:realty_offer_delete o.pk %}" class="admin_link">удалить</a>{% endif %}
+        </li>
+        {% empty %}
+        <li>Не нашли.</li>
+        {% endfor %}
+    </ul>
+    {% paginate %}
+{% endblock %}
+{% block sidebar %}
+<form action="{% url items %}" method="GET">
+    <div id="search" class="boxed">
+        <h2 class="title">Снять или купить?</h2>
+        <div class="content">
+            {{ search_form.offer_type }} 
+            {% if perms.realty.add_offertype %}<a href="{% url admin:realty_offertype_add %}" class="admin_link">добавить</a>{% endif %}
+            {% if perms.realty.change_offertype %}&nbsp;<a href="{% url admin:realty_offertype_changelist %}" class="admin_link">управление</a>{% endif %}
+        </div>
+    </div>
+    <div id="news" class="boxed">
+        <h2 class="title">Что?</h2>
+        <div class="content">
+            {{ search_form.apartment_type }} 
+            {% if perms.realty.add_apartmenttype %}<a href="{% url admin:realty_apartmenttype_add %}" class="admin_link">добавить</a>{% endif %}
+            {% if perms.realty.change_apartmenttype %}&nbsp;<a href="{% url admin:realty_apartmenttype_changelist %}" class="admin_link">управление</a>{% endif %}
+        </div>
+    </div>
+    <div id="extra" class="boxed">
+        <h2 class="title">Где?</h2>
+        <div class="content">
+            {{ search_form.quarter }}
+            {% if perms.realty.add_quarter %}<a href="{% url admin:realty_quarter_add %}" class="admin_link">добавить</a>{% endif %}
+            {% if perms.realty.change_quarter %}&nbsp;<a href="{% url admin:realty_quarter_changelist %}" class="admin_link">управление</a>{% endif %}
+        </div>
+    </div>
+    <div id="search_form_submit" class="boxed">
+            <input type="submit" value="Найти!" />
+    </div>
+</form>
+{% endblock %}

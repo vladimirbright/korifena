@@ -19,6 +19,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 <meta name="description" content="Агенство недвижимости {{ on_site_contacs.buisness_title|safe }}. Аренда, покупка, продажа квартир и помещений в Ростове-на-Дону." />
 <link href="{% media_url "favicon.ico" %}"  type="image/x-icon" rel="shortcut icon" />
 {% include_media "default.bundle.css" %}
+{% block head-extra %}{% endblock %}
 </head>
 <body>
 <div id="menu">
@@ -36,8 +37,8 @@ Description: A two-column, fixed-width template with dark color scheme.
 </div>
 <div id="page">
 	<div id="content">
-        {% block content %}
 		<div>
+        {% block content %}
 			<h1 class="title">Welcome to Our Website!</h1>
 			<p><img src="{% media_url "images/img08.jpg" %}" alt="" width="120" height="160" class="left" /></p>
 			<p><strong>Discovery</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. The  photos are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You"re free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. <em>Enjoy :)</em></p>
@@ -68,11 +69,13 @@ Description: A two-column, fixed-width template with dark color scheme.
 					<li><a href="#">Ut elit vitae augue</a></li>
 				</ul>
 			</div>
-		</div>
         {% endblock %}
+		</div>
 	</div>
 	<!-- end content -->
 	<div id="sidebar">
+    {% block sidebar %}
+        {% block start-sidebar %}{% endblock %}
 		<div id="search" class="boxed">
 			<div class="content">
                 {% block top-sidebar %}
@@ -123,6 +126,8 @@ Description: A two-column, fixed-width template with dark color scheme.
                 {% endblock %}
 			</div>
 		</div>
+        {% block end-sidebar %}{% endblock %}
+    {% endblock %}
 	</div>
 	<!-- end sidebar -->
 	<div style="clear: both;">&nbsp;</div>

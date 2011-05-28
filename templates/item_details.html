@@ -1,21 +1,84 @@
 {% extends "index.html" %}
-{% block bottom-sidebar-title %}Фотографии{% endblock %}
-{% block bottom-sidebar %}
-{% load thumbnail %}
-<ul class="list">
-    {% for im in offer.offerphoto_set.all %}
-        <li {% if forloop.first %}class="first"{% endif %}>
-            <a href="{{ im.img.url }}"><img src="{% thumbnail im.img 230x200 %}" /></a>
-            {% if perms.realty.delete_offerphoto %}
-                <br><a href="{% url admin:realty_offerphoto_delete im.pk %}">Удалить фотографию</a>
-            {% endif %}
-        </li>
-    {% empty %}
-        <li class="first">Не были загружены</li>
-        {% if perms.realty.add_offerphoto %}
-            <li><a href="{% url admin:realty_offer_change offer.pk %}">Загрузить</a></li>
-        {% endif %}
-    {% endfor %}
-</ul>
+{% load media thumbnail markup %}
+{% block head-extra %}
+    {% include_media "colorbox.css" %}
+    {% include_media "colorbox.js" %}
+    <script type="text/javascript">
+        $(function () {
+            $('a[rel="offerphoto"]').colorbox({
+                height: "80%",
+                scrolling: false,
+                photo: true,
+                opacity: 0.4,
+                current: "фото {current} из {total}",
+                previous: "пред.",
+                next: "след.",
+                close: "закрыть"
+            });
+        });
+    </script>
 {% endblock %}
-
+{% block content %}
+    <div class="breadcrumps">
+        <a href="{% url items %}">&larr; все</a><br>
+    </div>
+    <div class="item_details">
+        <ul class="item_opts">
+            <li>
+                <span>Что:</span> <a href="{% url items %}?apartment_type={{ offer.apartment_type_id  }}">{{ offer.apartment_type.title|lower }}</a>
+            </li>
+            <li>
+                <span>Где:</span> <a href="{% url items %}?quarter={{ offer.quarter_id  }}">{{ offer.quarter.title }}</a>
+            </li>
+            <li>
+                <span>Купить / снять:</span>  <a href="{% url items %}?offer_type={{ offer.offer_type_id  }}">{{ offer.offer_type.title|lower }}</a>
+            </li>
+        </ul>
+        <div class="offer_text">
+            {{ offer.text|textile }}
+        </div>
+        <div class="phone_me">
+            Риэлтор: {{ on_site_contacs.fio }},<br>
+            позвонить: {{ on_site_contacs.phone }},<br>
+            написать email: <a href="mailto:{{ on_site_contacs.email }}?subject={{ on_site_contacs.site.domain }} {{ offer }}">{{ on_site_contacs.email }}</a>
+        </div>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    <div id="search" class="boxed">
+        <h2 class="title">Фотографии</h2>
+        <div class="content">
+            <ul class="list">
+                {% for im in offer.offerphoto_set.all %}
+                    <li {% if forloop.first %}class="first"{% endif %}>
+                        <a href="{{ im.img.url }}" rel="offerphoto"><img src="{% thumbnail im.img 230x200 %}" /></a>
+                        {% if perms.realty.delete_offerphoto %}
+                            <br><a class="admin_link" href="{% url admin:realty_offerphoto_delete im.pk %}">удалить</a>
+                        {% endif %}
+                    </li>
+                {% empty %}
+                    <li class="first">Не были загружены</li>
+                {% endfor %}
+                {% if perms.realty.add_offerphoto %}
+                    <li><a href="{% url admin:realty_offer_change offer.pk %}" class="admin_link">Редактировать объект и загрузить фото</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div id="news" class="boxed">
+        <h2 class="title">Другие в том же районе</h2>
+        <div class="content">
+            <ul class="list">
+            {% for o in other_offers %}
+            <li {% if forloop.first %}class="first"{% endif %}>
+                <a href="{{ o.get_absolute_url }}">
+                    [{{ o.offer_type.title }}] {{ o.text|slice:":22"|linebreaksbr }}...
+                </a>
+            </li>
+            {% empty %}
+            <li class="first">не найдены</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

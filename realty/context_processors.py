@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from django.contrib.sites.models import Site
+
 from realty.models import SiteText
 
 
@@ -15,6 +17,10 @@ def get_site_data(request):
     if c:
         email.body = u"evgenia@korifena.ru"
         email.save()
+    fio, c = SiteText.objects.get_or_create(slug="fio")
+    if c:
+        fio.body = u"Евгения Истомина"
+        fio.save()
     title, c = SiteText.objects.get_or_create(slug="company_title")
     if c:
         title.body = u"&laquo;Корифена&raquo;"
@@ -24,6 +30,8 @@ def get_site_data(request):
             "phone": phone.body,
             "email": email.body,
             "buisness_title": title.body,
+            "fio": fio.body,
+            "site": Site.objects.get_current(),
         }
     }
 

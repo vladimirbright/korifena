@@ -238,10 +238,15 @@ hr {
 	padding: 10px 15px;
 	background-position: 0 13px;
 	border-top: 1px solid #CFCFCF;
+  vertical-align: middle;
 }
 
 .boxed ul li.first {
 	border: none;
+}
+
+input[type="radio"] {
+  vertical-align: bottom;
 }
 
 /* Search */
@@ -272,6 +277,59 @@ hr {
 #searchsubmit {
 }
 
+#search_form_submit {
+  text-align: center;
+}
+
+/* items list */
+.items_list li {
+  margin-bottom: 30px;
+}
+.items_list .quarter, .items_list .offer_type, .items_list .apartment_type {
+  font-size: 14px; 
+}
+.items_list .offer_type {
+  font-weight: bold;
+}
+.items_list p {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.breadcrumps a {
+  text-decoration: none;
+  color: blue;
+}
+.breadcrumps a:hover {
+  text-decoration: underline;
+}
+.offer_text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: black;
+}
+.phone_me {
+  margin-top: 50px;
+  text-align: right;
+  font-style: italic;
+}
+.pager {
+  margin: 15px;
+  font-size: 14px;
+}
+.pager a, .pager span {
+  margin-right: 5px;
+}
+.admin_link {
+  font-size: 9px;
+  color: red;
+  text-decoration: underline;
+}
+.admin_link:hover {
+  text-decoration: none;
+}
+.admin_link:visited {
+  color: red;
+}
 /* Footer */
 
 #footer {

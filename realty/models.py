@@ -92,11 +92,11 @@ class Offer(models.Model):
     slug = models.SlugField(max_length=200, editable=False)
 
     def __unicode__(self):
-        return u"Объявление: %s %s %s %s" %(
+        return u"Объявление: [%s] %s %s %s" %(
             self.offer_type,
-            self.apartment_type,
             self.quarter,
-            self.text[:50]
+            self.apartment_type,
+            self.text[:50].replace("\n","").replace("\r", "").replace("\t", "")
         )
 
     @models.permalink

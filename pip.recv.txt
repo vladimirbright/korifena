@@ -7,3 +7,6 @@ flup
 psycopg2
 git+https://github.com/j2a/pytils.git
 git+http://github.com/SmileyChris/easy-thumbnails.git
+ipython
+textile
+markdown

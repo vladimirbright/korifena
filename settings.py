@@ -96,6 +96,12 @@ MEDIA_BUNDLES = (
     ("default.bundle.css",
         "default.css"
     ),
+    ("colorbox.css",
+        "colorbox.css"),
+    ("colorbox.js",
+        "jquery-1.6.1.js",
+        "jquery.colorbox.js",
+    ),
 )
 
 
@@ -113,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.webdesign',
+    'django.contrib.markup',
     'easy_thumbnails',
     'mediagenerator',
     'pagination',
