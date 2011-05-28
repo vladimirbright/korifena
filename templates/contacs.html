@@ -1,0 +1,11 @@
+{% extends "index_page.html" %}
+{% load markup %}
+{% block content %}
+<div>
+    {{ contacts_text.body|textile }}
+    {% if perms.realty.change_sitetext %}
+    <br /><br />
+    <a href="{% url admin:realty_sitetext_change contacts_text.pk %}" class="admin_link">редактировать текст</a>
+    {% endif %}
+</div>
+{% endblock %}

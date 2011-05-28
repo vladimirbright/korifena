@@ -129,3 +129,23 @@ class OfferPhoto(models.Model):
         verbose_name = u"Фото"
         verbose_name_plural = u"Фото"
 
+
+class Service(models.Model):
+    title = models.CharField(u"Название", max_length=200)
+    description = models.TextField(u"Описание")
+    slug = models.SlugField(u"Кусок ссылки", max_length=200)
+    sort = models.PositiveIntegerField(u"Сортировка", default=0, db_index=True, help_text=SORT_HELP_TEXT)
+    published = models.BooleanField(u"Публиковать", default=True)
+
+    def __unicode__(self):
+        return u"Услуга: %s" % self.title[:70]
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ("service_details", [ self.slug, ])
+
+    class Meta:
+        verbose_name = u"Услуга"
+        verbose_name_plural = u"Услуги"
+        ordering = [ "sort" ]
+

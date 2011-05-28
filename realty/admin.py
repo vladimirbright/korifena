@@ -75,3 +75,11 @@ class OfferAdmin(admin.ModelAdmin):
     readonly_fields = ( "slug", )
     inlines = ( OfferImageAdminInline, )
 admin.site.register(Offer, OfferAdmin)
+
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = [ "title", "sort" ]
+    list_editable = [ "sort", ]
+    prepopulated_fields = {'slug':('title',),}
+admin.site.register(Service, ServiceAdmin)
+

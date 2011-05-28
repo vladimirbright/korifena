@@ -1,0 +1,28 @@
+{% extends "index_page.html" %}
+{% load markup %}
+{% block content %}
+  <h2 class="title">Наши услуги</h2>
+  <ul>
+  {% for s in all_services %}
+    <li>
+        <a href="{{ s.get_absolute_url }}">{{ s.title }}</a>
+        {% if perms.realty.change_service %}
+            &nbsp;<a href="{% url admin:realty_service_change s.pk %}" class="admin_link">редактировать</a>
+        {% endif %}
+        {% if perms.realty.delete_service %}
+            &nbsp;<a href="{% url admin:realty_service_delete s.pk %}" class="admin_link">удалить</a>
+        {% endif %}
+    </li>
+  {% endfor %}
+  {% if perms.realty.add_service %}
+    <a href="{% url admin:realty_service_add %}" class="admin_link">добавить</a>
+  {% endif %}
+  </ul>
+  <div>
+        {{ service_text.body|textile }}
+        {% if perms.realty.change_sitetext %}
+            <a href="{% url admin:realty_sitetext_change service_text.pk %}" class="admin_link">редактировать текст</a>
+        {% endif %}
+  </div>
+{% endblock %}
+

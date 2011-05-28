@@ -1,0 +1,20 @@
+{% extends "services.html" %}
+{% load markup %}
+{% block content %}
+  <div class="breadcrumps">
+      <a href="{% url services %}">&larr; все услуги</a><br /><br />
+  </div>
+  <h3 class="title">{{ service.title }}</h3>
+  <div>
+        {{ service.description|textile }}
+  </div>
+  <div>
+    {% if perms.realty.change_service %}
+    <a href="{% url admin:realty_service_change service.pk %}" class="admin_link">редактировать</a>
+    {% endif %}
+    {% if perms.realty.delete_service %}
+    &nbsp;<a href="{% url admin:realty_service_delete service.pk %}" class="admin_link">удалить</a>
+    {% endif %}
+  </div>
+{% endblock %}
+
