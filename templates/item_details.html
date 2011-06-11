@@ -37,6 +37,19 @@
         <div class="offer_text">
             {{ offer.text|textile }}
         </div>
+        {% if offer.holded %}
+        <h6 class="offer_holded">Объект сдан/продан</h6>
+        {% endif %}
+        {% if perms.realty.change_offer %}
+            <p>
+                <a href="{% url admin:realty_offer_change offer.pk %}" class="admin_link">редактировать объявление</a>
+            </p>
+        {% endif %}
+        {% if perms.realty.delete_offer %}
+            <p>
+                <a href="{% url admin:realty_offer_delete offer.pk %}" class="admin_link">удалить объявление</a>
+            </p>
+        {% endif %}
         <div class="phone_me">
             Риэлтор: {{ on_site_contacs.fio }},<br>
             позвонить: {{ on_site_contacs.phone }},<br>
