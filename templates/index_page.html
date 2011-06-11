@@ -5,18 +5,22 @@
   {% if not self_photo and perms.realty.add_siteimage %}
       <a href="{% url admin:realty_siteimage_add %}?slug=self_photo" class="admin_link">залить фото</a>
   {% endif %}
+  {% if self_photo and perms.realty.change_siteimage %}
+      <a href="{% url admin:realty_siteimage_change self_photo.pk %}" class="admin_link">перезалить фото</a>
+  {% endif %}
   {% if self_photo %}
   <p>
     <img src="{{ self_photo.file.url }}" alt="{{ on_site_contacs.fio }}" class="left" />
-    {% if perms.realty.change_siteimage %}<a href="{% url admin:realty_siteimage_change self_photo.pk %}" class="admin_link">перезалить фото</a>{% endif %}
   </p>
   {% endif %}
   {{ first_paragraph.body|textile }}
-  {% if perms.realty.change_sitetext %}<a href="{% url admin:realty_sitetext_change first_paragraph.pk %}" class="admin_link">отредактировать первый параграф</a>{% endif %}
+  {% if perms.realty.change_sitetext %}
+    <a href="{% url admin:realty_sitetext_change first_paragraph.pk %}" class="admin_link">отредактировать первый параграф</a>{% endif %}
   <div style="clear: both;"><br></div>
   <div>
   {{ second_paragraph.body|textile }}
-  {% if perms.realty.change_sitetext %}<a href="{% url admin:realty_sitetext_change second_paragraph.pk %}" class="admin_link">отредактировать второй параграф</a>{% endif %}
+  {% if perms.realty.change_sitetext %}
+    <a href="{% url admin:realty_sitetext_change second_paragraph.pk %}" class="admin_link">отредактировать второй параграф</a>{% endif %}
   </div>
 {% endblock %}
 {% block sidebar %}
