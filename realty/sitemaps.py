@@ -6,7 +6,7 @@ from realty.models import Offer, Service
 
 class OfferSitemap(Sitemap):
     changefreq = "weekly"
-    priority = 0.7
+    priority = 0.9
 
     def items(self):
         return Offer.objects.filter(published=True, holded=False)
