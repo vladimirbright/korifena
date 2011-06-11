@@ -2,15 +2,14 @@
 {% load media markup %}
 {% block content %}
   <h1 class="title">Приветсвуем вас на нашем сайте.</h1>
+  {% if not self_photo and perms.realty.add_siteimage %}
+      <a href="{% url admin:realty_siteimage_add %}?slug=self_photo" class="admin_link">залить фото</a>
+  {% endif %}
   {% if self_photo %}
   <p>
     <img src="{{ self_photo.file.url }}" alt="{{ on_site_contacs.fio }}" class="left" />
     {% if perms.realty.change_siteimage %}<a href="{% url admin:realty_siteimage_change self_photo.pk %}" class="admin_link">перезалить фото</a>{% endif %}
   </p>
-  {% else %}
-    {% if perms.realty.add_siteimage %}
-        <a href="{% url admin:realty_siteimage_add %}?slug=self_photo" class="admin_link">залить фото</a>
-    {% endif %}
   {% endif %}
   {{ first_paragraph.body|textile }}
   {% if perms.realty.change_sitetext %}<a href="{% url admin:realty_sitetext_change first_paragraph.pk %}" class="admin_link">отредактировать первый параграф</a>{% endif %}
