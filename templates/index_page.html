@@ -49,9 +49,9 @@
                       &nbsp;<a href="{% url admin:realty_offer_delete o.pk %}" class="admin_link">удалить</a>
                     {% endif %}
                 </li>
-                {% if forloop.last %}
-                <li><a href="{% url items %}">все объявления</a></li>
-                {% endif %}
+            {% if forloop.last %}
+            <li><a href="{% url items %}">все объявления</a></li>
+            {% endif %}
             {% empty %}
               <li>Нет объявлений</li>
             {% endfor %}
@@ -74,10 +74,10 @@
                     {% if perms.realty.delete_service %}
                       &nbsp;<a href="{% url admin:realty_service_delete s.pk %}" class="admin_link">удалить</a>
                     {% endif %}
-                    {% if forloop.last %}
-                      <li><a href="{% url services %}">Весь список</a></li>
-                    {% endif %}
                 </li>
+                {% if forloop.last %}
+                  <li><a href="{% url services %}">Весь список</a></li>
+                {% endif %}
                 {% empty %}
                   <li class="first">Еще добавляем!</li>
                 {% endfor %}
