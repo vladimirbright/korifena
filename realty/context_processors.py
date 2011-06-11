@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.contrib.sites.models import Site
 
 from realty.models import SiteText
@@ -32,7 +33,8 @@ def get_site_data(request):
             "buisness_title": title.body,
             "fio": fio.body,
             "site": Site.objects.get_current(),
-        }
+        },
+        "DEBUG": settings.DEBUG,
     }
 
 
