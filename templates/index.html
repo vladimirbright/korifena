@@ -36,40 +36,7 @@ Description: A two-column, fixed-width template with dark color scheme.
 </div>
 <div id="page">
 	<div id="content">
-		<div>
-        {% block content %}
-			<h1 class="title">Welcome to Our Website!</h1>
-			<p><img src="{% media_url "images/img08.jpg" %}" alt="" width="120" height="160" class="left" /></p>
-			<p><strong>Discovery</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. The  photos are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You"re free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. <em>Enjoy :)</em></p>
-			<h2>Praesent Scelerisque</h2>
-			<p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat:</p>
-			<blockquote>
-				<p>&ldquo;Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget.&rdquo;</p>
-			</blockquote>
-		</div>
-		<div>&nbsp;</div>
-		<div class="twocols">
-			<div class="col1">
-				<h3 class="title">Lorem Ipsum Dolor</h3>
-				<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Quisque dictum integer nisl risus, sagittis convallis, rutrum id, congue, and nibh.</p>
-				<p><a href="#">Read more&hellip;</a></p>
-			</div>
-			<div class="col2">
-				<h3 class="title">Pellentesque Quis</h3>
-				<ul class="list">
-					<li><a href="#">Ut semper vestibulum est</a></li>
-					<li><a href="#">Vestibulum luctus dui</a></li>
-					<li><a href="#">Integer rutrum nisl in mi</a></li>
-					<li><a href="#">Etiam malesuada rutrum</a></li>
-					<li><a href="#">Aenean facilisis ligula</a></li>
-					<li><a href="#">Vestibulum luctus dui</a></li>
-					<li><a href="#">Ut elit vitae augue</a></li>
-					<li><a href="#">Sed sagittis leo vehicula</a></li>
-					<li><a href="#">Ut elit vitae augue</a></li>
-				</ul>
-			</div>
-        {% endblock %}
-		</div>
+		<div>{% block content %}{% endblock %}</div>
 	</div>
 	<!-- end content -->
 	<div id="sidebar">

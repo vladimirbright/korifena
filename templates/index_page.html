@@ -1,38 +1,25 @@
 {% extends "index.html" %}
-{% load media %}
+{% load media markup %}
 {% block content %}
-  <h1 class="title">Welcome to Our Website!</h1>
-  <p><img src="{% media_url "images/img08.jpg" %}" alt="" width="120" height="160" class="left" /></p>
-  <p><strong>Discovery</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. The  photos are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You"re free to use it for both commercial or personal use. I only ask that you link back to <a href="http://www.freecsstemplates.org/">my site</a> in some way. <em>Enjoy :)</em></p>
-  <h2>Praesent Scelerisque</h2>
-  <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat:</p>
-  <blockquote>
-    <p>&ldquo;Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec placerat odio vel elit. Nullam ante orci, pellentesque eget.&rdquo;</p>
-  </blockquote>
+  <h1 class="title">Приветсвуем вас на нашем сайте.</h1>
+  {% if self_photo %}
+  <p>
+    <img src="{{ self_photo.file.url }}" alt="{{ on_site_contacs.fio }}" class="left" />
+    {% if perms.realty.change_siteimage %}<a href="{% url admin:realty_siteimage_change self_photo.pk %}" class="admin_link">перезалить фото</a>{% endif %}
+  </p>
+  {% else %}
+    {% if perms.realty.add_siteimage %}
+        <a href="{% url admin:realty_siteimage_add %}?slug=self_photo" class="admin_link">залить фото</a>
+    {% endif %}
+  {% endif %}
+  {{ first_paragraph.body|textile }}
+  {% if perms.realty.change_sitetext %}<a href="{% url admin:realty_sitetext_change first_paragraph.pk %}" class="admin_link">отредактировать первый параграф</a>{% endif %}
+  <div style="clear: both;"><br></div>
+  <div>
+  {{ second_paragraph.body|textile }}
+  {% if perms.realty.change_sitetext %}<a href="{% url admin:realty_sitetext_change second_paragraph.pk %}" class="admin_link">отредактировать второй параграф</a>{% endif %}
   </div>
-  <div>&nbsp;</div>
-  <div class="twocols">
-    <div class="col1">
-      <h3 class="title">Lorem Ipsum Dolor</h3>
-      <p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Quisque dictum integer nisl risus, sagittis convallis, rutrum id, congue, and nibh.</p>
-      <p><a href="#">Read more&hellip;</a></p>
-      </div>
-      <div class="col2">
-        <h3 class="title">Pellentesque Quis</h3>
-        <ul class="list">
-          <li><a href="#">Ut semper vestibulum est</a></li>
-          <li><a href="#">Vestibulum luctus dui</a></li>
-          <li><a href="#">Integer rutrum nisl in mi</a></li>
-          <li><a href="#">Etiam malesuada rutrum</a></li>
-          <li><a href="#">Aenean facilisis ligula</a></li>
-          <li><a href="#">Vestibulum luctus dui</a></li>
-          <li><a href="#">Ut elit vitae augue</a></li>
-          <li><a href="#">Sed sagittis leo vehicula</a></li>
-          <li><a href="#">Ut elit vitae augue</a></li>
-        </ul>
-    </div>
 {% endblock %}
-
 {% block sidebar %}
 <div id="news" class="boxed">
     <h2 class="title">Новые объекты</h2>

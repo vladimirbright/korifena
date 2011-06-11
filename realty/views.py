@@ -5,18 +5,32 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils.datastructures import SortedDict
 
-from realty.models import Offer, Service, SiteText
+from realty.models import Offer, Service, SiteText, SiteImage
 from realty.forms import SearchForm
 
 
 def index(request):
+    try:
+        self_photo = SiteImage.objects.get(slug="self_photo")
+    except SiteImage.DoesNotExist:
+        self_photo = None
+    first_paragraph, cr = SiteText.objects.get_or_create(slug="index_first_paragraph")
+    if cr:
+        first_paragraph.body = u"""
+        Раздел находится в процессе наполнения
+"""
+        first_paragraph.save()
+    second_paragraph, cr = SiteText.objects.get_or_create(slug="index_second_paragraph")
     c = {
         "active_link": {
             "index": "active"
         },
         "page_title": u"",
         "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type").order_by('-pk')[:5],
-        "services": Service.objects.filter(published=True)[:5]
+        "services": Service.objects.filter(published=True)[:5],
+        "self_photo": self_photo,
+        "first_paragraph": first_paragraph,
+        "second_paragraph": second_paragraph,
     }
     return render(request, "index_page.html", c)
 
