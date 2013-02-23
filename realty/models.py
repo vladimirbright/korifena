@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
+
 import pytils
 
 from django.db import models
@@ -86,7 +88,7 @@ class Offer(models.Model):
     apartment_type = models.ForeignKey(ApartmentType, verbose_name=u"Тип объекта")
     quarter = models.ForeignKey(Quarter, verbose_name=u"Район города")
     text = models.TextField(u"Объявление")
-    added = models.DateTimeField(u"Добавлено", auto_now_add=True, editable=True)
+    added = models.DateTimeField(u"Добавлено")
     holded = models.BooleanField(u"Сдана/Продана", default=False)
     published = models.BooleanField(u"Публиковать", default=True)
     slug = models.SlugField(max_length=200, editable=False)
@@ -110,6 +112,8 @@ class Offer(models.Model):
             self.quarter.title
         )
         self.slug = pytils.translit.slugify(s)[:200]
+        if not self.pk:
+            self.added = datetime.now()
         return super(Offer, self).save(*args, **kwargs)
 
     class Meta:

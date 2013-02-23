@@ -26,7 +26,7 @@ def index(request):
             "index": "active"
         },
         "page_title": u"",
-        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type").order_by('-pk')[:5],
+        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type")[:5],
         "services": Service.objects.filter(published=True)[:5],
         "self_photo": self_photo,
         "first_paragraph": first_paragraph,
@@ -52,7 +52,7 @@ def services(request):
             "services": "active"
         },
         "page_title": u" &mdash; Услуги",
-        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type").order_by('-pk')[:5],
+        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type")[:5],
         "services": Service.objects.filter(published=True)[:5],
         "all_services": Service.objects.filter(published=True),
         "service_text": service_text,
@@ -67,7 +67,7 @@ def service_details(request, item_slug):
             "services": "active"
         },
         "page_title": u" &mdash; Услуги &mdash; %s" % service.title,
-        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type").order_by('-pk')[:5],
+        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type")[:5],
         "services": Service.objects.filter(published=True)[:5],
         "service": service
     }
@@ -91,11 +91,7 @@ def items(request):
         apartment_type = form.cleaned_data.get("apartment_type", None)
         if apartment_type:
             kw["apartment_type"] = apartment_type
-    offers = Offer.objects.filter(**kw).select_related(
-                                            "offer_type",
-                                            "quarter",
-                                            "apartment_type"
-                                        ).order_by('-pk')
+    offers = Offer.objects.filter(**kw).select_related("offer_type", "quarter", "apartment_type")
     c = {
         "active_link": {
             "items": "active"
@@ -144,7 +140,7 @@ h2. Реквизиты
             "contacts": "active"
         },
         "page_title": u" &mdash; Контакты",
-        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type").order_by('-pk')[:5],
+        "last_offers": Offer.objects.filter(published=True).select_related("offer_type", "quarter", "apartment_type")[:5],
         "services": Service.objects.filter(published=True)[:5],
         "contacts_text": contacts_text
     }
